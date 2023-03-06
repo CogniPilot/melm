@@ -3,7 +3,7 @@
  
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 -.082" rpy="0 0 3.14159265359"/>
       <geometry>
         <mesh filename="package://melm_description/meshes/base.dae" scale="1 1 1" />
       </geometry>
@@ -56,7 +56,7 @@
     <visual>
       <origin xyz="-.14 -.204 -.061" rpy=" 0 0 0"/>
       <geometry>
-        <mesh filename="package://melm_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
+        <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
       </geometry>
     </visual>
   
@@ -85,11 +85,11 @@
   <joint name="base_joint" type="fixed">
     <parent link="base_link"/>
     <child link="base_footprint"/>
-    <origin xyz="0.0 0.0 -.15" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 -.17" rpy="0 0 0"/>
   </joint>
 
   <joint name="rplidar_joint" type="fixed">
-    <origin xyz="0 0 .22" rpy="0 0 0"/>
+    <origin xyz="0 0 .12" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="rplidar_link"/>
   </joint>
