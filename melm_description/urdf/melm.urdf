@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<robot name="melm" xmlns:xacro="http://ros.org/wiki/xacro">
+ 
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/base.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz=".14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz=".14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    
+    <visual>
+      <origin xyz="-.14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-.14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    
+    <visual>
+      <origin xyz=".14 -.204 -.061" rpy=" 0 0 0"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz=".14 -.204 -.061" rpy=" 0 0 0"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  
+    <visual>
+      <origin xyz="-.14 -.204 -.061" rpy=" 0 0 0"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-.14 -.204 -.061" rpy=" 0 0 0"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  
+  </link>
+  
+
+  <link name="base_footprint"/>
+
+  <link name="rplidar_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://melm_description/meshes/rplidar.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="/link/rplidar_link/sensor/rplidar/scan"/>
+
+  <joint name="rplidar_joint2" type="fixed">
+    <parent link="rplidar_link"/>
+    <child link="/link/rplidar_link/sensor/rplidar/scan"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0.0 0.0 -.15" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="rplidar_joint" type="fixed">
+    <origin xyz="0 0 .22" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="rplidar_link"/>
+  </joint>
+
+</robot>
