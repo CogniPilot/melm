@@ -30,7 +30,7 @@ def generate_launch_description():
     map_arg = DeclareLaunchArgument(
         'map',
         default_value=PathJoinSubstitution(
-            [pkg_melm_nav2, 'maps', 'depot.yaml']),
+            [pkg_melm_nav2, 'maps', 'basic_map.yaml']),
         description='Full path to map yaml file to load')
 
     namespace = LaunchConfiguration('namespace')

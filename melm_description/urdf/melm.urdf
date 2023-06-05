@@ -65,20 +65,20 @@
 
   <link name="base_footprint"/>
 
-  <link name="rplidar_link">
+  <link name="lidar_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 -.028" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://melm_description/meshes/rplidar.dae" scale="1 1 1" />
+        <mesh filename="package://melm_description/meshes/STL27L.dae" scale="1 1 1" />
       </geometry>
     </visual>
   </link>
 
-  <link name="/link/rplidar_link/sensor/rplidar/scan"/>
+  <link name="/link/lidar_link/sensor/lidar/scan"/>
 
-  <joint name="rplidar_joint2" type="fixed">
-    <parent link="rplidar_link"/>
-    <child link="/link/rplidar_link/sensor/rplidar/scan"/>
+  <joint name="lidar_joint2" type="fixed">
+    <parent link="lidar_link"/>
+    <child link="/link/lidar_link/sensor/lidar/scan"/>
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
   </joint>
 
@@ -88,10 +88,10 @@
     <origin xyz="0.0 0.0 -.17" rpy="0 0 0"/>
   </joint>
 
-  <joint name="rplidar_joint" type="fixed">
-    <origin xyz="0 0 .12" rpy="0 0 0"/>
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="0 0 .1" rpy="0 0 0"/>
     <parent link="base_link"/>
-    <child link="rplidar_link"/>
+    <child link="lidar_link"/>
   </joint>
 
 </robot>
