@@ -1,65 +1,60 @@
 <?xml version="1.0"?>
 <robot name="melm" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <material name="black">
+    <color rgba="0.01 0.01 0.01 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
  
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 -.082" rpy="0 0 3.14159265359"/>
+      <origin xyz="0 0 .078" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://melm_description/meshes/base.dae" scale="1 1 1" />
+        <mesh filename="package://melm_description/meshes/MELM.dae" scale="1 1 1" />
       </geometry>
     </visual>
     <visual>
-      <origin xyz=".14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <origin xyz=".14 .204 0.11725" rpy=" 0 0 3.14159265359"/>
       <geometry>
         <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
       </geometry>
     </visual>
     <visual>
-      <origin xyz=".14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <origin xyz=".14 .204 0.11725" rpy=" 0 0 3.14159265359"/>
       <geometry>
         <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
       </geometry>
     </visual>
     
     <visual>
-      <origin xyz="-.14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <origin xyz=".14 -.204 0.11725" rpy=" 0 0 0"/>
       <geometry>
         <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
       </geometry>
     </visual>
     <visual>
-      <origin xyz="-.14 .204 -.061" rpy=" 0 0 3.14159265359"/>
+      <origin xyz=".14 -.204 0.11725" rpy=" 0 0 0"/>
       <geometry>
         <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
       </geometry>
     </visual>
-    
-    <visual>
-      <origin xyz=".14 -.204 -.061" rpy=" 0 0 0"/>
+
+        <visual>
+      <origin xyz="-.14 .183 0.099" rpy=" 0 0 -1.57079632679"/>
       <geometry>
-        <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
-      </geometry>
-    </visual>
-    <visual>
-      <origin xyz=".14 -.204 -.061" rpy=" 0 0 0"/>
-      <geometry>
-        <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
+        <mesh filename="package://melm_description/meshes/OmniWheel.dae" scale="1 1 1" />
       </geometry>
     </visual>
   
     <visual>
-      <origin xyz="-.14 -.204 -.061" rpy=" 0 0 0"/>
+      <origin xyz="-.14 -.183 0.099" rpy=" 0 0 1.57079632679"/>
       <geometry>
-        <mesh filename="package://melm_description/meshes/RubberWheel.dae" scale="1 1 1" />
+        <mesh filename="package://melm_description/meshes/OmniWheel.dae" scale="1 1 1" />
       </geometry>
     </visual>
-    <visual>
-      <origin xyz="-.14 -.204 -.061" rpy=" 0 0 0"/>
-      <geometry>
-        <mesh filename="package://melm_description/meshes/HubMotor.dae" scale="1 1 1" />
-      </geometry>
-    </visual>
-  
   </link>
   
 
@@ -67,31 +62,31 @@
 
   <link name="lidar_link">
     <visual>
-      <origin xyz="0 0 -.028" rpy="0 0 0"/>
+      <origin xyz="0 0 -.017" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://melm_description/meshes/STL27L.dae" scale="1 1 1" />
+        <box size="0.039 0.039 0.022"/>
       </geometry>
+      <material name="black"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.014" radius="0.018"/>
+      </geometry>
+      <material name="black"/>
     </visual>
   </link>
 
-  <link name="/link/lidar_link/sensor/lidar/scan"/>
-
-  <joint name="lidar_joint2" type="fixed">
-    <parent link="lidar_link"/>
-    <child link="/link/lidar_link/sensor/lidar/scan"/>
-    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="0 0 0.265" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
   </joint>
 
   <joint name="base_joint" type="fixed">
     <parent link="base_link"/>
     <child link="base_footprint"/>
-    <origin xyz="0.0 0.0 -.17" rpy="0 0 0"/>
-  </joint>
-
-  <joint name="lidar_joint" type="fixed">
-    <origin xyz="0 0 .1" rpy="0 0 0"/>
-    <parent link="base_link"/>
-    <child link="lidar_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
   </joint>
 
 </robot>
